@@ -11,7 +11,7 @@
 \geometry{top=1in, bottom=1in, left=1in, right=1in}
 
 \title{Dat102 Oblig 3}
-\author{Thobias K. Høivik} %,Gunnar Salbu, Birk Tangen, Glenn Boine}
+\author{Thobias Høivik, Gunnar Salbu, Birk Tangen, Glenn Boine}
 \date{\today}
 
 \begin{document}
@@ -49,7 +49,7 @@ Så, for \texttt{LenketMengde}, er tidskompleksiteten:
 
 \textbf{TabellMengde} (Array-basert mengde):
 \begin{itemize}
-    \item \textbf{Beste tilfelle}: Hvis første element ikke finnes i den andre mengden, kan vi umiddelbart returnere \texttt{false}, som tar \(O(1)\).
+    \item \textbf{Beste tilfelle}: For \(A \subset B\), viss A er tom, kan vi umiddelbart returnere \texttt{true}, som tar \(O(1)\).
     \item \textbf{Verste tilfelle}: Vi må sjekke hvert element i den nåværende mengden for å se om det finnes i den andre mengden. For hvert element i den nåværende mengden, sjekker vi om det finnes i den andre mengden, som tar \(O(n)\) for hvert av de \(n\) elementene, som gir en total tidskompleksitet på \(O(n^2)\).
 \end{itemize}
 
@@ -60,7 +60,7 @@ Så, for \texttt{TabellMengde}, er tidskompleksiteten:
 
 \textbf{LenketMengde} (Lenket liste-basert mengde):
 \begin{itemize}
-    \item \textbf{Beste tilfelle}: Hvis første element ikke finnes i den andre mengden, kan vi umiddelbart returnere \texttt{false}, som tar \(O(1)\).
+    \item \textbf{Beste tilfelle}: Fortsatt \(O(1)\).
     \item \textbf{Verste tilfelle}: Vi må sjekke hvert element i den nåværende mengden, som innebærer å sjekke om hvert element er i den andre mengden. Dette krever å traversere begge listene, og derfor tar det \(O(n^2)\) i verste tilfelle, der \(n\) er antall elementer.
 \end{itemize}
 
@@ -82,7 +82,8 @@ For å se om to mengder er like, matematisk, innebærer å sjekke om de to mengd
         er \texttt{delMengdeAv()} metode siden vi ikke kan spare noe meningsful tid.  
 \begin{itemize}
     \item \textbf{Beste tilfelle:} \texttt{erDelMengdeAv} \(\rightarrow O(1)\). 
-        Vi kaller metoden to ganger som gir oss, men dette simplifiseres til \(O(1)\). 
+        Vi kaller metoden to ganger som gir oss, men konstant gange konstant 
+        er fortsatt \(O(1)\). 
     \item textbf{Verste tilfelle:} Igjen for vi det dobbelte av \texttt{erDelMengdeAv},
         men \(2n^2\) simplifiseres til \(n^2\) så vi sitter igjen med \(O(n^2)\).
 
@@ -181,7 +182,9 @@ Så, for \texttt{LenketMengde}, er tidskompleksiteten:
 \section*{Uke 10 e) HashSet \& TreeSet vs. Tabell \& Lenket }
 Generellt når vi gjorde praktiske hastighetstester mellom Lenket- og Tabellmengde 
 vs. HashSet, som vi bruket i JavaSetToMengde implementasjonen, observerte vi 
-en hastighetsforskjell på to størrelsesordener; en enorm forskjell. 
+en hastighetsforskjell på to størrelsesordener; en enorm forskjell. Med en god 
+hashing funksjon får vi konstant lookup tid og hashing vil sjeldnere oppleve 
+det verste tilfellet.
 Når det gjelder sammenligning mellom Lenket- og Tabellmengde observerte vi i våre tester at 
 tabellmengde som oftest var litt raskere. Med HashSet og TreeSet står det på nettet at 
 HashSet som oftest har bedre kompleksitet, gjern \(O(1)\) når TreeSet er \(O()\).  
